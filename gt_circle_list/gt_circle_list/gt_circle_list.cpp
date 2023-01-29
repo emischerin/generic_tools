@@ -4,18 +4,64 @@
 #include <iostream>
 #include "CircleList.h"
 
+void Print3()
+{
+    std::cout << "I AM THREE!" << std::endl;
+}
+void Print2()
+{
+    std::cout << "I AM TWO!" << std::endl;
+}
+void Print1()
+{
+    std::cout << "I AM ONE!" << std::endl;
+}
+
+void TestLoopExecutor()
+{
+    generic_tools::loop_executor_void loop;
+
+    loop.Add(&Print1);
+    loop.Add(&Print2);
+    loop.Add(&Print3);
+
+    int count = loop.Count();
+
+    for (int i = 0; i < 13; ++i) {
+        loop.Execute();
+    }
+
+    
+}
+
+void TestOnePtrCase()
+{
+    generic_tools::loop_executor_void loop;
+
+    loop.Add(&Print1);
+    
+
+    int count = loop.Count();
+
+    for (int i = 0; i < 3; ++i) {
+        loop.Execute();
+    }
+}
+
 int main()
 {
-    Node<int> n1;
+    TestOnePtrCase();
+    TestLoopExecutor();
+    generic_tools::Node<int> n1;
     n1._data = new int(0x29a);
 
-    Node<int> n2;
+    generic_tools::Node<int> n2;
     n2._data = new int(0x309);
 
-    Node<int> n3;
+    generic_tools::Node<int> n3;
     n3._data = new int(999);
 
-    CircleList<int> cl;
+    generic_tools::CircleList<int> cl;
 
     
 
