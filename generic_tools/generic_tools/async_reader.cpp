@@ -21,7 +21,7 @@ namespace generic_tools {
 		this->_user_paths_ptr = paths;
 	}
 
-	std::unordered_map<std::string*, std::string*>* async_reader::GetResult()
+	std::unordered_map<std::string*, std::string>* async_reader::GetResult()
 	{
 		return &_success;
 	}
@@ -103,7 +103,7 @@ namespace generic_tools {
 
 		file_content = file_content_buff.str();
 
-		std::pair<std::string*, std::string*> pair(path,&file_content);
+		std::pair<std::string*, std::string> pair(path,file_content);
 
 		_success_mutex.lock();
 

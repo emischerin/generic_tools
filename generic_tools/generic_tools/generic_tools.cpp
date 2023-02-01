@@ -8,9 +8,9 @@
 
 
 
-void ConvertToVec(std::unordered_map<std::string*, std::string*>* files)
+void ConvertToVec(std::unordered_map<std::string*, std::string>* files)
 {
-    std::vector<std::string*> v;
+    std::vector<std::string> v;
 
     for (auto i = files->cbegin(); i != files->cend(); ++i) {
         v.push_back(i->second);
@@ -45,7 +45,7 @@ int main()
    std::cout << result << std::endl;
    std::cout << ar.GetStatus() << std::endl;
     
-   std::unordered_map<std::string*, std::string*>* files = ar.GetResult();
+   std::unordered_map<std::string*, std::string>* files = ar.GetResult();
 
    ConvertToVec(files);
 
