@@ -15,10 +15,8 @@ namespace generic_tools {
 	
 	class async_reader
 	{
-		using files_statuses = std::unordered_map<std::string*, int>;
-		using files_map = std::unordered_map<std::string*, std::string>;
-		using paths_ptr_vector = std::vector<std::string*>;
-		using paths_vector = std::vector<std::string>;
+		
+			
 
 	public:
 		
@@ -40,22 +38,22 @@ namespace generic_tools {
 
 		async_reader();
 
-		async_reader(paths_vector* paths);
+		async_reader(std::vector<std::string>* paths);
 
 		
 
 
-		void SetFiles(paths_vector* paths);
+		void SetFiles(std::vector<std::string>* paths);
 
-		files_map* GetResult();
+		std::unordered_map<std::string*, std::string>* GetResult();
 
-		int ReadFilesAsync(paths_vector* paths);
+		int ReadFilesAsync(std::vector<std::string>* paths);
 
 		int ReadFilesAsync();
 
 		int GetStatus();
 
-		paths_ptr_vector* GetFailedToRead();
+		std::vector<std::string*>* GetFailedToRead();
 
 
 		~async_reader();
@@ -65,15 +63,15 @@ namespace generic_tools {
 		
 		
 		int ReadFileAsyncInternal(std::string* path);
-		paths_ptr_vector _failed;
+		std::vector<std::string*> _failed;
 		
-		files_statuses _statuses;
-		files_map _success;
+		std::unordered_map<std::string*, int> _statuses;
+		std::unordered_map<std::string*,std::string> _success;
 		std::mutex _failed_mutex;
 		
 		std::mutex _success_mutex;
 		std::atomic<size_t> _success_count;
-		paths_vector* _user_paths_ptr = nullptr;
+		std::vector<std::string>* _user_paths_ptr = nullptr;
 
 
 		

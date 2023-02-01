@@ -5,14 +5,14 @@ namespace generic_tools {
 	async_reader::async_reader() {}
 
 
-	async_reader::async_reader(paths_vector* paths)
+	async_reader::async_reader(std::vector<std::string>* paths)
 	{
 		this->_user_paths_ptr = paths;
 	}
 
 	
 
-	void async_reader::SetFiles(paths_vector* paths)
+	void async_reader::SetFiles(std::vector<std::string> * paths)
 	{
 
 		if (this->_user_paths_ptr != nullptr)
@@ -26,7 +26,7 @@ namespace generic_tools {
 		return &_success;
 	}
 
-	int async_reader::ReadFilesAsync(paths_vector* paths)
+	int async_reader::ReadFilesAsync(std::vector<std::string>* paths)
 	{
 		this->SetFiles(paths);
 

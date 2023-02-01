@@ -19,15 +19,15 @@ void ConvertToVec(std::unordered_map<std::string*, std::string>* files)
 
 void InitPaths(std::vector<std::string>* p)
 {
-    p->push_back(std::string("D:/asyncReadTest/1.txt"));
-    p->push_back(std::string("D:/asyncReadTest/2.txt"));
-    p->push_back(std::string("D:/asyncReadTest/3.txt"));
-    p->push_back(std::string("D:/asyncReadTest/4.txt"));
-    p->push_back(std::string("D:/asyncReadTest/5.txt"));
-    p->push_back(std::string("D:/asyncReadTest/6.txt"));
-    p->push_back(std::string("D:/asyncReadTest/7.txt"));
-    p->push_back(std::string("D:/asyncReadTest/8.txt"));
-    p->push_back(std::string("D:/asyncReadTest/999.txt")); //doesn't exist
+    p->push_back(std::string("C:/asyncReadTest/1.txt"));
+    p->push_back(std::string("C:/asyncReadTest/2.txt"));
+    p->push_back(std::string("C:/asyncReadTest/3.txt"));
+    p->push_back(std::string("C:/asyncReadTest/4.txt"));
+    p->push_back(std::string("C:/asyncReadTest/5.txt"));
+    p->push_back(std::string("C:/asyncReadTest/6.txt"));
+    p->push_back(std::string("C:/asyncReadTest/7.txt"));
+    p->push_back(std::string("C:/asyncReadTest/8.txt"));
+    p->push_back(std::string("C:/asyncReadTest/999.txt")); //doesn't exist
     
     
 
