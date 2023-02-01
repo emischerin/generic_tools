@@ -45,7 +45,7 @@ namespace generic_tools {
 
 		void SetFiles(std::vector<std::string>* paths);
 
-		std::unordered_map<std::string*, std::string>* GetResult();
+		std::unordered_map<std::string*, std::string*>* GetResult();
 
 		int ReadFilesAsync(std::vector<std::string>* paths);
 
@@ -66,7 +66,7 @@ namespace generic_tools {
 		std::vector<std::string*> _failed;
 		
 		std::unordered_map<std::string*, int> _statuses;
-		std::unordered_map<std::string*,std::string> _success;
+		std::unordered_map<std::string*,std::string*> _success;
 		std::mutex _failed_mutex;
 		
 		std::mutex _success_mutex;
