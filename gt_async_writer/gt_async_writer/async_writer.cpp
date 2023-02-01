@@ -4,13 +4,13 @@ namespace generic_tools {
 
 	async_writer::async_writer(){}
 
-	async_writer::async_writer(paths_vector* paths, contents_vector* contents)
+	async_writer::async_writer(std::vector<std::string*>* paths, std::vector<std::string*>* contents)
 	{
 		this->_user_paths_ptr = paths;;
 		this->_files_content = contents;
 	}
 
-	void async_writer::SetFiles(paths_vector* paths, contents_vector* contents)
+	void async_writer::SetFiles(std::vector<std::string*>* paths, std::vector<std::string*>* contents)
 	{
 
 		if (this->_user_paths_ptr != nullptr)
@@ -28,7 +28,7 @@ namespace generic_tools {
 		return &_success;
 	}
 
-	int async_writer::WriteFilesAsync(paths_vector* paths,contents_vector* contents)
+	int async_writer::WriteFilesAsync(std::vector<std::string*>* paths, std::vector<std::string*>* contents)
 	{
 		this->SetFiles(paths,contents);
 

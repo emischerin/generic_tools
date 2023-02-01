@@ -10,8 +10,8 @@ void TestAsyncWriter()
 {
     std::string c1("HELLO!");
     std::string c2("FILE!");
-    std::string p1("C://test/f1.tst");
-    std::string p2("C://test/f2.tst");
+    std::string p1("F://test/f1.tst");
+    std::string p2("F://test/f2.tst");
     std::vector<std::string*> paths;
 
     paths.push_back(&p1);

@@ -13,11 +13,11 @@ namespace generic_tools {
 
 	class async_writer
 	{
-		using files_statuses = std::unordered_map<std::string*, int>;
-		using files_map = std::vector<std::string*>;
-		using paths_ptr_vector = std::vector<std::string*>;
-		using paths_vector = std::vector<std::string*>;
-		using contents_vector = std::vector<std::string*>;
+		
+		
+		
+		
+		
 
 	public:
 
@@ -41,35 +41,35 @@ namespace generic_tools {
 
 		async_writer();
 
-		async_writer(paths_vector* paths,contents_vector* contents);
+		async_writer(std::vector<std::string*>* paths, std::vector<std::string*>* contents);
 
-		void SetFiles(paths_vector* paths,contents_vector* contents);
+		void SetFiles(std::vector<std::string*>* paths, std::vector<std::string*>* contents);
 
-		files_map* GetResult();
+		std::vector<std::string*> * GetResult();
 
-		int WriteFilesAsync(paths_vector* paths, contents_vector* contents);
+		int WriteFilesAsync(std::vector<std::string*>* paths, std::vector<std::string*>* contents);
 
 		int WriteFilesAsync();
 
 		int GetStatus();
 
-		paths_ptr_vector* GetFailedToWrite();
+		std::vector<std::string*>* GetFailedToWrite();
 
 
 		~async_writer();
 
 	private:
 		int WriteFileAsyncInternal(std::string* path,std::string* data);
-		paths_ptr_vector _failed;
+		std::vector<std::string*> _failed;
 
-		files_statuses _statuses;
-		files_map _success;
+		std::unordered_map<std::string*, int> _statuses;
+		std::vector<std::string*> _success;
 		std::mutex _failed_mutex;
 
 		std::mutex _success_mutex;
 		std::atomic<size_t> _success_count;
-		paths_vector* _user_paths_ptr = nullptr;
-		contents_vector* _files_content = nullptr;
+		std::vector<std::string*>* _user_paths_ptr = nullptr;
+		std::vector<std::string*>* _files_content = nullptr;
 	};
 }
 
