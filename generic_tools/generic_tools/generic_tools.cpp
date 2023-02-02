@@ -38,7 +38,7 @@ int main()
     std::vector<std::string> paths;
     InitPaths(&paths);
 
-    generic_tools::async_reader ar(&paths);
+    generic_tools::io::async_reader ar(&paths);
 
    int result = ar.ReadFilesAsync();
 
