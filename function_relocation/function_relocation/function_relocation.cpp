@@ -21,7 +21,7 @@ void TestFunction(int a)
 
 int main()
 {
-	generic_tools::memory_relocation mem_re;
+	generic_tools::runtime::memory_relocation mem_re;
 	int test_inv = 0xFA453C0A;
 	int test_inv_result = mem_re.InvertInt(test_inv);
 	void* main_ptr = &main;
