@@ -22,7 +22,7 @@ void TestAsyncWriter()
     contents.push_back(&c1);
     contents.push_back(&c2);
 
-    generic_tools::async_writer aw;
+    generic_tools::io::async_writer aw;
 
     aw.WriteFilesAsync(&paths, &contents);
 
