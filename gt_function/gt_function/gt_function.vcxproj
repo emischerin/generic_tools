@@ -127,7 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="function_opcode.cpp" />
     <ClCompile Include="gt_function.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="function_opcode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
