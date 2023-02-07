@@ -98,7 +98,7 @@ namespace generic_tools {
 
 			_start_addr = (uint8_t*)new_memory;
 
-			_last_addr = _start_addr + size;
+			_last_addr = (_start_addr + size) - 1;
 
 			_size = size;
 
