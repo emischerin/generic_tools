@@ -2,7 +2,8 @@
 //
 
 #include <iostream>
-#include "memory_relocation.h"
+#include "memory.h"
+#include "function.h"
 #define CALL_ADDR 0x00007FF6514D2334
 
 
@@ -21,16 +22,19 @@ void TestFunction(int a)
 
 int main()
 {
-	generic_tools::runtime::memory_relocation mem_re;
+	generic_tools::runtime::memory mem_re(12);
+	generic_tools::runtime::function f;
 	int test_inv = 0xFA453C0A;
-	int test_inv_result = mem_re.InvertInt(test_inv);
+	int test_inv_result = generic_tools::runtime::InvertInt(test_inv);
 	void* main_ptr = &main;
 	
-	uint8_t* skip_msvc_proxy = mem_re.RecalculateFunctionAddr((uint8_t*)main_ptr);
+
+
+	uint8_t* skip_msvc_proxy = f.RecalculateFunctionAddr((uint8_t*)main_ptr);
 	int(*main_skipped)(void) = (int(*)(void))skip_msvc_proxy;
 	main_skipped();
 	
-	long long* inverted_mem = (long long*)mem_re.InvertMemoryBytesNew(skip_msvc_proxy, sizeof(long long));
+	long long* inverted_mem = (long long*)generic_tools::runtime::InvertMemoryBytesNew(skip_msvc_proxy, sizeof(long long));
 		
 	void(*TestFPtr)(int) = TestFunction;
 	TestFPtr(10);
