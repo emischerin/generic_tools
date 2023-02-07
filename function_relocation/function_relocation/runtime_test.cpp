@@ -25,7 +25,9 @@ int main()
 	generic_tools::runtime::memory mem_re(12);
 	generic_tools::runtime::function f;
 	int test_inv = 0xFA453C0A;
+	int* tinv_ptr = &test_inv;
 	int test_inv_result = generic_tools::runtime::InvertInt(test_inv);
+	int* result_ptr = &test_inv_result;
 	void* main_ptr = &main;
 	
 
