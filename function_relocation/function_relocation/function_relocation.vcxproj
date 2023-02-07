@@ -128,9 +128,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="function_relocation.cpp" />
+    <ClCompile Include="memory.cpp" />
     <ClCompile Include="memory_relocation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="memory.h" />
     <ClInclude Include="memory_relocation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

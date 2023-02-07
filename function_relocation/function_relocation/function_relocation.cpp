@@ -28,7 +28,7 @@ int main()
 	
 	uint8_t* skip_msvc_proxy = mem_re.RecalculateFunctionAddr((uint8_t*)main_ptr);
 	int(*main_skipped)(void) = (int(*)(void))skip_msvc_proxy;
-	//main_skipped();
+	main_skipped();
 	
 	long long* inverted_mem = (long long*)mem_re.InvertMemoryBytesNew(skip_msvc_proxy, sizeof(long long));
 		
