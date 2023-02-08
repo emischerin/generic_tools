@@ -39,7 +39,8 @@ void TestFunctionParsing()
 
 int main()
 {
-	TestFunctionParsing();
+	void(*test)(void) = TestFunction;
+	generic_tools::runtime::function ft(((void*)test));
 	TestMemoryDestrutor();
 	generic_tools::runtime::memory mem_re(12);
 	generic_tools::runtime::function f(nullptr);
@@ -53,8 +54,8 @@ int main()
 
 	uint8_t* skip_msvc_proxy = f.RecalculateFunctionAddr((uint8_t*)main_ptr);
 	int(*main_skipped)(void) = (int(*)(void))skip_msvc_proxy;
-	std::cout << (int)*skip_msvc_proxy;
-	main_skipped();
+	//std::cout << (int)*skip_msvc_proxy;
+	//main_skipped();
 	
 	long long* inverted_mem = (long long*)generic_tools::runtime::InvertMemoryBytesNew(skip_msvc_proxy, sizeof(long long));
 		
