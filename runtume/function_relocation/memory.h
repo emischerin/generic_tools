@@ -23,7 +23,7 @@ namespace generic_tools {
 			size_t memsize();
 
 			void* getstartaddr();
-
+			~memory();
 		private:
 			uint8_t* _start_addr = nullptr;
 			uint8_t* _last_addr = nullptr;

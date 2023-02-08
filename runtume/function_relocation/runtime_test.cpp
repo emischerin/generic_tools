@@ -20,8 +20,14 @@ void TestFunction(int a)
 	std::cout << a << std::endl;
 }
 
+void TestMemoryDestrutor()
+{
+	generic_tools::runtime::memory m(12);
+}
+
 int main()
 {
+	TestMemoryDestrutor();
 	generic_tools::runtime::memory mem_re(12);
 	generic_tools::runtime::function f;
 	int test_inv = 0xFA453C0A;

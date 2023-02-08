@@ -139,5 +139,10 @@ namespace generic_tools {
 		{
 			return (void*)_start_addr;
 		}
+
+		memory::~memory()
+		{
+			delete[] _start_addr;
+		}
 	}
 }
