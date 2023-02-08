@@ -1,6 +1,9 @@
 #include "function.h"
 namespace generic_tools {
 	namespace runtime {
+
+		function::function(){}
+
 		uint8_t* function::RecalculateFunctionAddr(uint8_t* addr)
 		{
 			uint8_t* current_addr = (addr + 1);
@@ -23,5 +26,7 @@ namespace generic_tools {
 
 			return result;
 		}
+
+		function::~function(){}
 	}
 }
