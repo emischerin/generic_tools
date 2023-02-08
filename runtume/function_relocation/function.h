@@ -73,9 +73,10 @@ namespace generic_tools {
 			void* _first_opcode_ptr = nullptr;
 			void* _last_opcode_ptr = nullptr;
 			size_t _size = 0;
-			std::unordered_set<uint8_t*> _jumps;
-			std::unordered_set<uint8_t*> _calls;
-
+			std::vector<uint8_t*> _jumps;
+			std::vector<uint8_t*> _calls;
+			std::unordered_set<uint8_t*> _jumps_set;
+			std::unordered_set<uint8_t*> _calls_set;
 		};
 	}
 }

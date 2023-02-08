@@ -43,12 +43,25 @@ namespace generic_tools {
 			for (;;) {
 				uint8_t tmp_opcode = (uint8_t)(*tmp_addr);
 				
+				auto is_ret = _return_opcodes.find(tmp_opcode);
 				auto is_call = _call_opcodes.find(tmp_opcode);
 				auto is_jump = _jmp_opcodes.find(tmp_opcode);
-				auto is_ret = _return_opcodes.find(tmp_opcode);
+				
 
 				if (is_ret != _return_opcodes.cend()) {
-
+					_size = size;
+					_last_opcode_ptr = tmp_addr;
+					break;
+				}
+				else if (is_call != _call_opcodes.cend()) {
+					++size;
+					_calls.push_back(tmp_addr);
+					_calls_set.insert(tmp_addr);
+				}
+				else if (is_jump != _jmp_opcodes.cend()) {
+					++size;
+					_jumps.push_back(tmp_addr);
+					_jumps_set.insert(tmp_addr);
 				}
 				
 				
