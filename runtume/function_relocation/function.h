@@ -8,24 +8,27 @@ namespace generic_tools {
 		{
 		public:
 
-			function();
+			function(void* function_ptr);
 
 
-			void SetFirstOpcode(void* function_ptr);
+			
 
-			void Execute();
+			void ExecuteNoReturnValue();
+
+			void* ExecuteReturnValue();
 
 			size_t GetFunctionSize();
 
-			std::vector<uint8_t>& GetFunctionOpcodes(void* function_ptr);
+			
 
 
 			~function();
 
+			/*use for jmp opcodes*/
 			uint8_t* RecalculateFunctionAddr(uint8_t* addr);
 
 		private:
-			void ParseFunction();
+			void ParseFunction(void* function);
 			enum opcodes {
 				_RET = 0xC3,
 				_RET_IMM16 = 0xC2,
@@ -68,7 +71,11 @@ namespace generic_tools {
 				0xEB,/**/
 			};
 			void* _first_opcode_ptr = nullptr;
-			std::vector<uint8_t> _data;
+			void* _last_opcode_ptr = nullptr;
+			size_t _size = 0;
+			std::unordered_set<uint8_t*> _jumps;
+			std::unordered_set<uint8_t*> _calls;
+
 		};
 	}
 }

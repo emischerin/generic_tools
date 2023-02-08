@@ -29,7 +29,7 @@ int main()
 {
 	TestMemoryDestrutor();
 	generic_tools::runtime::memory mem_re(12);
-	generic_tools::runtime::function f;
+	generic_tools::runtime::function f(nullptr);
 	int test_inv = 0xFA453C0A;
 	int* tinv_ptr = &test_inv;
 	int test_inv_result = generic_tools::runtime::InvertInt(test_inv);
