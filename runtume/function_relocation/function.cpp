@@ -63,6 +63,8 @@ namespace generic_tools {
 					_jumps.push_back(tmp_addr);
 					_jumps_set.insert(tmp_addr);
 				}
+
+				++tmp_addr;
 				
 				
 			}

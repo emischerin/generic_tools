@@ -25,8 +25,21 @@ void TestMemoryDestrutor()
 	generic_tools::runtime::memory m(12);
 }
 
+void TestFunction()
+{
+	std::cout << "HELLO,LOW,LEVEL!" << std::endl;
+}
+
+void TestFunctionParsing()
+{
+	void(*test)(void) = TestFunction;
+	generic_tools::runtime::function f(((void*)test));
+
+}
+
 int main()
 {
+	TestFunctionParsing();
 	TestMemoryDestrutor();
 	generic_tools::runtime::memory mem_re(12);
 	generic_tools::runtime::function f(nullptr);
