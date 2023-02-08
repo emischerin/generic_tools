@@ -8,7 +8,6 @@ namespace generic_tools {
 		{
 			uint8_t* current_addr = (addr + 1);
 			uint8_t* instruction_end = current_addr + sizeof(int);
-			uint8_t* new_addr = 0;
 			uint8_t* tmp = current_addr;
 			uint8_t bit_step = 0;
 			uint32_t instruction_args = 0;
@@ -22,7 +21,7 @@ namespace generic_tools {
 				tmp++;
 			}
 
-			result = current_addr + instruction_args + 5;
+			result = current_addr + instruction_args + 4;
 
 			return result;
 		}
