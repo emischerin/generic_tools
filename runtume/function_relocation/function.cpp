@@ -33,6 +33,16 @@ namespace generic_tools {
 			return result;
 		}
 
+
+		/*
+		* 
+		* 
+		* Release configuration machine code not necesserely contains function, 
+		* moreover,function does not necessary ends with ret opcodes,so there is no way
+		* to detect function end....(((
+		* 
+		* 
+		*/
 		void function::ParseFunction(void* function)
 		{
 			uint8_t* firstopcode = (uint8_t*)function;
