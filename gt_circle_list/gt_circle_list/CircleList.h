@@ -1,7 +1,7 @@
 #pragma once
 #include<vector>
 namespace generic_tools {
-	namespace dt {
+	namespace ds {
 		template<class T>
 		class Node
 		{

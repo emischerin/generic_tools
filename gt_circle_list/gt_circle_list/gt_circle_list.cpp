@@ -19,7 +19,7 @@ void Print1()
 
 void TestLoopExecutor()
 {
-    generic_tools::dt::loop_executor_void loop;
+    generic_tools::ds::loop_executor_void loop;
 
     loop.Add(&Print1);
     loop.Add(&Print2);
@@ -36,7 +36,7 @@ void TestLoopExecutor()
 
 void TestOnePtrCase()
 {
-    generic_tools::dt::loop_executor_void loop;
+    generic_tools::ds::loop_executor_void loop;
 
     loop.Add(&Print1);
     
@@ -52,16 +52,16 @@ int main()
 {
     TestOnePtrCase();
     TestLoopExecutor();
-    generic_tools::dt::Node<int> n1;
+    generic_tools::ds::Node<int> n1;
     n1._data = new int(0x29a);
 
-    generic_tools::dt::Node<int> n2;
+    generic_tools::ds::Node<int> n2;
     n2._data = new int(0x309);
 
-    generic_tools::dt::Node<int> n3;
+    generic_tools::ds::Node<int> n3;
     n3._data = new int(999);
 
-    generic_tools::dt::CircleList<int> cl;
+    generic_tools::ds::CircleList<int> cl;
 
     
 
