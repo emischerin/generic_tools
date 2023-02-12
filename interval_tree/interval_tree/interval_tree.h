@@ -8,6 +8,8 @@ namespace generic_tools {
 		public:
 			interval_tree_node(DataType* data,IntervalType& min, IntervalType& max) :
 				_data(data),_min(min),_max(max){}
+			interval_tree_node(IntervalType& min, IntervalType& max) :
+				_min(min), _max(max) {}
 						
 			DataType* _data;
 			IntervalType _min;
@@ -118,6 +120,128 @@ namespace generic_tools {
 			}
 						
 			
+		};
+
+		template<class DataType, class IntervalType>
+		class interval_tree_preallocated
+		{
+		public:
+			interval_tree_preallocated() {}
+
+			void AllocateNode(IntervalType min, IntervalType max)
+			{
+				if (!_root) {
+					_root = new interval_tree_node<DataType, IntervalType>(min, max);
+
+				}
+				else {
+					Allocate(min, max);
+				}
+			}
+
+			void Insert(DataType* data, IntervalType value)
+			{
+
+				interval_tree_node<DataType, IntervalType>* current = _root;
+
+				for (;;) {
+					
+					if (!current) return;
+
+					if (value >= current->_min && value <= current->_max) {
+						current->_data = data;
+					}
+					
+					if (value < current->_min) {
+						current = current->_left;
+					}
+					else if (value > current->_max) {
+						current = current->_right;
+					}
+
+
+				}
+
+			}
+
+
+			DataType* Find(IntervalType value)
+			{
+
+
+				interval_tree_node<DataType, IntervalType>* current = _root;
+
+				for (;;) {
+					if (!current) return nullptr;
+
+					if (value >= current->_min && value <= current->_max) {
+						return current->_data;
+					}
+					if (value < current->_min) {
+						current = current->_left;
+					}
+					else if (value > current->_max) {
+						current = current->_right;
+					}
+				}
+
+			}
+
+			~interval_tree_preallocated()
+			{
+
+				this->RecursiveDestructorImpl(_root);
+
+			}
+
+
+		private:
+			interval_tree_node<DataType, IntervalType>* _root = nullptr;
+
+			void Allocate(IntervalType min, IntervalType max)
+			{
+				interval_tree_node<DataType, IntervalType>* current = _root;
+
+				for (;;) {
+					interval_tree_node<DataType, IntervalType>* upper_level = current;
+
+					if (max <= current->_min) {
+						current = current->_left;
+						if (!current) {
+							current = new interval_tree_node<DataType, IntervalType>(min, max);
+							upper_level->_left = current;
+							break;
+						}
+					}
+					else if (min >= current->_max) {
+						current = current->_right;
+						if (!current) {
+							current = new interval_tree_node<DataType, IntervalType>(min, max);
+							upper_level->_right = current;
+							break;
+						}
+					}
+
+
+				}
+			}
+
+			
+
+			void RecursiveDestructorImpl(interval_tree_node<DataType, IntervalType>* start_node)
+			{
+				if (start_node) {
+					interval_tree_node<DataType, IntervalType>* left = start_node->_left;
+					interval_tree_node<DataType, IntervalType>* right = start_node->_right;
+
+					delete start_node;
+
+					RecursiveDestructorImpl(left);
+					RecursiveDestructorImpl(right);
+				}
+			}
+
+
 		};
 	}
 }
