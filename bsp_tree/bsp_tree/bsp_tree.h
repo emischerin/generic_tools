@@ -23,8 +23,10 @@ namespace generic_tools {
 			SpaceType _dim;
 			bsp_tree_node<DataType, SpaceType>* _left = nullptr;
 			bsp_tree_node<DataType, SpaceType>* _right = nullptr;
-			bsp_tree_node<DataType, SpaceType>* _parent = nullptr;
+			
 		};
+
+		
 
 		template<class DataType,class SpaceType>
 		class bsp_tree
@@ -35,10 +37,62 @@ namespace generic_tools {
 				
 				_root = PartitionSpace(_root,0,_x,_y);
 			};
+
+			DataType* Search(SpaceType x, SpaceType y)
+			{
+				bsp_tree_node<DataType, SpaceType>* current = _root;
+
+				while (current->_left && current->_right) {
+					if ((current->_partition_index % 2) == 0) {
+						if (x >= current->_dim) {
+							current = current->_right;
+						}
+						else
+							current = current->_left;
+					}
+					else if ((current->_partition_index % 2) == 1) {
+						if (y >= current->_dim) {
+							current = current->_right;
+						}
+						else
+							current = current->_left;
+
+					}
+				}
+
+				return current->_data;
+			}
+
+			void Insert(DataType* data, SpaceType x, SpaceType y)
+			{
+				bsp_tree_node<DataType, SpaceType>* current = _root;
+
+				while (current->_left && current->_right) {
+					if ((current->_partition_index % 2) == 0) {
+						if (x >= current->_dim) {
+							current = current->_right;
+						}
+						else
+							current = current->_left;
+					}
+					else if ((current->_partition_index % 2) == 1) {
+						if (y >= current->_dim) {
+							current = current->_right;
+						}
+						else
+							current = current->_left;
+
+					}
+				}
+
+				current->_data = data;
+			}
+
 		private:
 			SpaceType _x, _y;
 			size_t _partition_depth;
 			bsp_tree_node<DataType, SpaceType>* _root = nullptr;
+					
 
 			bsp_tree_node<DataType, SpaceType>* 
 				PartitionSpace(bsp_tree_node<DataType, SpaceType>* node,SpaceType depth,SpaceType x,SpaceType y)

@@ -11,8 +11,37 @@ void TestSpacePartition()
 
 }
 
+void TestInserting()
+{
+    generic_tools::ds::bsp_tree<int, int> tree(1000, 1000, 4);
+    int test_data = 600;
+    tree.Insert(&test_data, 100, 100);
+    tree.Insert(&test_data, 900, 900);
+
+    int debug = 10;
+}
+
+void TestSearching()
+{
+    generic_tools::ds::bsp_tree<int, int> tree(1000, 1000, 8);
+    int test_data = 600;
+    int test_data2 = 999;
+    int test_data3 = 777;
+    tree.Insert(&test_data, 100, 100);
+    tree.Insert(&test_data2, 900, 900);
+    tree.Insert(&test_data3, 20, 20);
+
+    int* data_ptr = tree.Search(15, 15);
+    int* data_ptr2 = tree.Search(900, 900);
+    int* data_ptr3 = tree.Search(100, 100);
+
+    int debug = 10;
+}
+
 int main()
 {
+    TestSearching();
+    TestInserting();
     TestSpacePartition();
     std::cout << "Hello World!\n";
 }
