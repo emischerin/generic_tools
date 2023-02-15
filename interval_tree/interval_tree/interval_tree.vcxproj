@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="interval_tree.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="interval_tree.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
