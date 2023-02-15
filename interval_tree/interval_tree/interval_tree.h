@@ -11,7 +11,7 @@ namespace generic_tools {
 			interval_tree_node(IntervalType& min, IntervalType& max) :
 				_min(min), _max(max) {}
 						
-			DataType* _data;
+			DataType* _data = nullptr;
 			IntervalType _min;
 			IntervalType _max;
 			
