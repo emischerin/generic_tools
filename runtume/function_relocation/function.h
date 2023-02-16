@@ -20,7 +20,7 @@ namespace generic_tools {
 			size_t GetFunctionSize();
 
 			
-
+			std::vector<uint8_t>* GetRawBytes();
 
 			~function();
 

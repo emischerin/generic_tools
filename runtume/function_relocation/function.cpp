@@ -29,6 +29,10 @@ namespace generic_tools {
 		}
 
 		size_t function::GetFunctionSize() { return _size; }
+
+		std::vector<uint8_t>* function::GetRawBytes() { return &_raw_bytes; }
+
+
 		
 		/*use for jmp opcodes*/
 		uint8_t* function::RecalculateFunctionAddr(uint8_t* addr)
