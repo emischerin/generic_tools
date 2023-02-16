@@ -37,10 +37,24 @@ void TestFunctionParsing()
 
 }
 
-int main()
+void TestInliningDisabled()
 {
 	void(*test)(void) = TestFunction;
 	generic_tools::runtime::function ft(((void*)test));
+
+	std::vector<uint8_t>* opcodes = ft.GetRawBytes();
+
+	int debug = 10;
+}
+
+int main()
+{
+	TestInliningDisabled();
+	void(*test)(void) = TestFunction;
+	generic_tools::runtime::function ft(((void*)test));
+
+
+	
 	TestMemoryDestrutor();
 	generic_tools::runtime::memory mem_re(12);
 	generic_tools::runtime::function f(nullptr);
