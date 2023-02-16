@@ -77,6 +77,7 @@ namespace generic_tools {
 			std::vector<uint8_t*> _calls;
 			std::unordered_set<uint8_t*> _jumps_set;
 			std::unordered_set<uint8_t*> _calls_set;
+			std::vector<uint8_t> _raw_bytes;
 		};
 	}
 }

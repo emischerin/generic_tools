@@ -10,6 +10,26 @@ namespace generic_tools {
 			ParseFunction(_first_opcode_ptr);
 		}
 
+		void function::ExecuteNoReturnValue()
+		{
+			void(*function_ptr)(void) = ((void(*)(void))_first_opcode_ptr);
+
+			if (function_ptr) {
+				function_ptr();
+			}
+		}
+
+		void* function::ExecuteReturnValue()
+		{
+			void*(*function_ptr)(void) = ((void*(*)(void))_first_opcode_ptr);
+
+			if (function_ptr) {
+				return function_ptr();
+			}
+		}
+
+		size_t function::GetFunctionSize() { return _size; }
+		
 		/*use for jmp opcodes*/
 		uint8_t* function::RecalculateFunctionAddr(uint8_t* addr)
 		{
@@ -52,7 +72,8 @@ namespace generic_tools {
 
 			for (;;) {
 				uint8_t tmp_opcode = (uint8_t)(*tmp_addr);
-				
+				_raw_bytes.push_back(tmp_opcode);
+
 				auto is_ret = _return_opcodes.find(tmp_opcode);
 				auto is_call = _call_opcodes.find(tmp_opcode);
 				auto is_jump = _jmp_opcodes.find(tmp_opcode);
