@@ -30,6 +30,13 @@ void TestFunction()
 	std::cout << "HELLO,LOW,LEVEL!" << std::endl;
 }
 
+/*
+* 
+* 
+* MSVC doesn't Generate ret opcode for this function
+* 
+* 
+*/
 void TestFunctionParsing()
 {
 	void(*test)(void) = TestFunction;
@@ -47,8 +54,44 @@ void TestInliningDisabled()
 	int debug = 10;
 }
 
+
+/*
+* Theese two function contain proper ret opcodes
+*/
+int TestSum(int a, int b) { return a + b; }
+bool TestFunctionRetVal()
+{
+	std::cout << "HELLO,LOW,LEVEL!" << std::endl;
+	return true;
+}
+void TestFunctionLevelOptEnabled()
+{
+	int(*test)(int,int) = TestSum;
+	generic_tools::runtime::function ft(((void*)test));
+
+	std::vector<uint8_t>* opcodes = ft.GetRawBytes();
+	std::cout << opcodes->size() << std::endl;
+	int dont_close_console;
+	std::cin >> dont_close_console;
+	int debug = 10;
+}
+
+void TestFunctionBoolRet()
+{
+	bool(*test)(void) = TestFunctionRetVal;
+	generic_tools::runtime::function ft(((void*)test));
+
+	std::vector<uint8_t>* opcodes = ft.GetRawBytes();
+	std::cout << opcodes->size() << std::endl;
+	int dont_close_console;
+	std::cin >> dont_close_console;
+	int debug = 10;
+}
+
 int main()
 {
+	TestFunctionBoolRet();
+	TestFunctionLevelOptEnabled();
 	TestInliningDisabled();
 	void(*test)(void) = TestFunction;
 	generic_tools::runtime::function ft(((void*)test));

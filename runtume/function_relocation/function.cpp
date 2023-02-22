@@ -65,6 +65,8 @@ namespace generic_tools {
 		* moreover,function does not necessary ends with ret opcodes,so there is no way
 		* to detect function end....(((
 		* 
+		* But, if function returns value it defenetely WILL have ret opcode.
+		* 
 		* 
 		*/
 		void function::ParseFunction(void* function)
